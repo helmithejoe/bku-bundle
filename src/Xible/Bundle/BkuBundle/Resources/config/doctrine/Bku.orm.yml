@@ -1,0 +1,66 @@
+Xible\Bundle\BkuBundle\Entity\Bku:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\BkuRepository
+    indexes:
+        id:
+            columns:
+                - id
+        checkNo:
+            columns:
+                - check_no
+        journalNo:
+            columns:
+                - check_no
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        inputDate:
+            type: date
+            nullable: false
+        journalNo:
+            type: string
+            nullable: false
+        journalDate:
+            type: date
+            nullable: false
+        amount:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            default: '0.00'
+        status:
+            type: string
+            nullable: false
+        createdAt:
+            type: datetime
+            nullable: false
+        createdBy:
+            type: string
+            nullable: false
+        updatedAt:
+            type: datetime
+            nullable: false
+        updatedBy:
+            type: string
+            nullable: false
+    manyToOne:
+        resource:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Resource
+            inversedBy: bku
+        cash:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefBkum
+            joinColumn:
+                name: cash_id
+                referencedColumnName: id_kas
+    oneToMany:
+        checks:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Check
+            mappedBy: bku
+    lifecycleCallbacks: {  }

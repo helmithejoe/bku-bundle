@@ -1,0 +1,33 @@
+Xible\Bundle\BkuBundle\Entity\Resource:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\ResourceRepository
+    indexes:
+        id:
+            columns:
+                - id
+        resourceNo:
+            columns:
+                - resource_no
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        resourceNo:
+            type: string
+            nullable: false
+        description:
+            type: string
+            nullable: false
+    oneToMany:
+        checks:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Check
+            mappedBy: resource
+        bkus:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Bku
+            mappedBy: resource
+    lifecycleCallbacks: {  }

@@ -1,0 +1,61 @@
+<?php
+
+namespace Xible\Bundle\BkuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Resource
+ *
+ * @ORM\Table(name="Resource", indexes={@ORM\Index(name="id", columns={"id"}), @ORM\Index(name="resourceNo", columns={"resource_no"})})
+ * @ORM\Entity(repositoryClass="Xible\Bundle\BkuBundle\Entity\ResourceRepository")
+ */
+class Resource
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resourceNo", type="string", nullable=false)
+     */
+    private $resourceNo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Xible\Bundle\BkuBundle\Entity\Check", mappedBy="resource")
+     */
+    private $checks;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Xible\Bundle\BkuBundle\Entity\Bku", mappedBy="resource")
+     */
+    private $bkus;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->checks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bkus = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

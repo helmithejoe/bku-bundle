@@ -1,0 +1,72 @@
+Xible\Bundle\BkuBundle\Entity\RefSatker:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\EntityRefSatkerRepository
+    table: ref_satker
+    indexes:
+        Unit:
+            columns:
+                - id_unit
+    id:
+        idUnit:
+            type: string
+            nullable: false
+            length: 9
+            fixed: true
+            default: 0.0.00.00
+            id: true
+            column: id_unit
+            generator:
+                strategy: IDENTITY
+    fields:
+        kelompok:
+            type: string
+            nullable: true
+            length: 100
+            fixed: true
+            default: '-'
+        nmUnit:
+            type: string
+            nullable: false
+            length: 100
+            fixed: true
+            default: '-'
+            column: nm_unit
+        nmKota:
+            type: string
+            nullable: true
+            length: 20
+            fixed: true
+            default: Jakarta
+            column: nm_kota
+        skt:
+            type: string
+            nullable: true
+            length: 3
+            fixed: true
+            default: '-'
+        alamat:
+            type: string
+            nullable: true
+            length: 200
+            fixed: true
+            default: '-'
+        idKetr:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            default: '1'
+            column: id_ketr
+        keterangan:
+            type: string
+            nullable: true
+            length: 200
+            fixed: true
+            default: '-'
+        koderek:
+            type: string
+            nullable: true
+            length: 11
+            fixed: true
+            default: '-'
+    lifecycleCallbacks: {  }

@@ -1,0 +1,221 @@
+Xible\Bundle\BkuBundle\Entity\DatJurnal01:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\DatJurnal01Repository
+    table: dat_jurnal01
+    indexes:
+        jns:
+            columns:
+                - Jns
+        nojurnal:
+            columns:
+                - NoJurnal
+        tgtrans:
+            columns:
+                - TgTrans
+        Kode:
+            columns:
+                - Kode
+        debet:
+            columns:
+                - debet
+        kredit:
+            columns:
+                - kredit
+        sts:
+            columns:
+                - sts
+        nobukti:
+            columns:
+                - nobukti
+        tgbukti:
+            columns:
+                - tgbukti
+        kegiatan:
+            columns:
+                - kegiatan
+        loket:
+            columns:
+                - loket
+        poli:
+            columns:
+                - poli
+        pasien:
+            columns:
+                - pasien
+        rekanan:
+            columns:
+                - rekanan
+        Referensi:
+            columns:
+                - Referensi
+        kd_lpb:
+            columns:
+                - kd_lpb
+        kd_lak:
+            columns:
+                - kd_lak
+        kd_akt:
+            columns:
+                - kd_akt
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        jns:
+            type: string
+            nullable: false
+            length: 2
+            fixed: true
+            default: '-'
+            column: Jns
+        nojurnal:
+            type: string
+            nullable: false
+            length: 30
+            fixed: true
+            default: '-'
+            column: NoJurnal
+        tgtrans:
+            type: date
+            nullable: false
+            default: '0000-00-00'
+            column: TgTrans
+        debet:
+            type: decimal
+            nullable: true
+            precision: 16
+            scale: 2
+            default: '0.00'
+        kredit:
+            type: decimal
+            nullable: true
+            precision: 16
+            scale: 2
+            default: '0.00'
+        uraian:
+            type: string
+            nullable: true
+            length: 250
+            fixed: true
+            default: '-'
+            column: Uraian
+        sts:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            default: '0'
+        nobukti:
+            type: string
+            nullable: false
+            length: 50
+            fixed: true
+            default: '-'
+        tgbukti:
+            type: date
+            nullable: false
+            default: '0000-00-00'
+        keterangan:
+            type: string
+            nullable: true
+            length: 250
+            fixed: true
+            default: '-'
+        tgentri:
+            type: datetime
+            nullable: true
+            default: '0000-00-00 00:00:00'
+        ket:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            default: '-'
+        referensi:
+            type: string
+            nullable: true
+            length: 50
+            fixed: true
+            default: '-'
+            column: Referensi
+       
+        loket:
+            type: string
+            nullable: true
+            length: 2
+            fixed: true
+            default: '00'
+        
+        pasien:
+            type: string
+            nullable: true
+            length: 6
+            fixed: true
+            default: '000000'
+        
+        jtrans:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            default: '-'
+            column: jTrans
+        kdLpb:
+            type: string
+            nullable: true
+            length: 3
+            fixed: true
+            default: '000'
+            column: kd_lpb
+        kdLak:
+            type: string
+            nullable: true
+            length: 3
+            fixed: true
+            default: '000'
+            column: kd_lak
+        kdAkt:
+            type: string
+            nullable: true
+            length: 4
+            fixed: true
+            default: '0000'
+            column: kd_akt
+        opr:
+            type: string
+            nullable: true
+            length: 30
+            fixed: true
+            default: '-'
+    manyToOne:
+        resource:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Resource
+            joinColumn:
+                name: dana
+                referencedColumnName: resource_no
+        account:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefRekening
+            joinColumn:
+                name: Kode
+                referencedColumnName: Kode
+        activity:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefKegiatan
+            joinColumn:
+                name: kegiatan
+                referencedColumnName: kd_Keg
+        unit:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefSatker
+            joinColumn:
+                name: poli
+                referencedColumnName: id_unit
+        partner:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefRekanan
+            joinColumn:
+                name: rekanan
+                referencedColumnName: kode
+    lifecycleCallbacks: {  }

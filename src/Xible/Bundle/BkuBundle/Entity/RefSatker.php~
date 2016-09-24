@@ -1,0 +1,81 @@
+<?php
+
+namespace Xible\Bundle\BkuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RefSatker
+ *
+ * @ORM\Table(name="ref_satker", indexes={@ORM\Index(name="Unit", columns={"id_unit"})})
+ * @ORM\Entity(repositoryClass="Xible\Bundle\BkuBundle\EntityRefSatkerRepository")
+ */
+class RefSatker
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_unit", type="string", length=9)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idUnit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kelompok", type="string", length=100, nullable=true)
+     */
+    private $kelompok;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nm_unit", type="string", length=100, nullable=false)
+     */
+    private $nmUnit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nm_kota", type="string", length=20, nullable=true)
+     */
+    private $nmKota;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="skt", type="string", length=3, nullable=true)
+     */
+    private $skt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alamat", type="string", length=200, nullable=true)
+     */
+    private $alamat;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="id_ketr", type="string", length=1, nullable=true)
+     */
+    private $idKetr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keterangan", type="string", length=200, nullable=true)
+     */
+    private $keterangan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="koderek", type="string", length=11, nullable=true)
+     */
+    private $koderek;
+
+
+}

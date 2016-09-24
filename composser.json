@@ -1,0 +1,19 @@
+{
+    "name": "xible/bku-bundle",
+    "type": "project",
+    "description": "BKU Bundle",
+    "keywords": ["bundle"],
+    "license": "Commercial",
+    "authors": [
+        {"name": "Helmi Joe", "email": "helmi.informatika@gmail.com"}
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "minimum-stability": "dev"
+}

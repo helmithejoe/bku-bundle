@@ -1,0 +1,82 @@
+Xible\Bundle\BkuBundle\Entity\Check:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\CheckRepository
+    indexes:
+        id:
+            columns:
+                - id
+        checkNo:
+            columns:
+                - check_no
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        checkNo:
+            type: string
+            nullable: false
+        inputDate:
+            type: date
+            nullable: false
+        checkDate:
+            type: date
+            nullable: false
+        description:
+            type: string
+            nullable: false
+        receiverName:
+            type: string
+            nullable: false
+        amount:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            default: '0.00'
+        status:
+            type: string
+            nullable: false
+        createdAt:
+            type: datetime
+            nullable: false
+        createdBy:
+            type: string
+            nullable: false
+        updatedAt:
+            type: datetime
+            nullable: false
+        updatedBy:
+            type: string
+            nullable: false
+    manyToOne:
+        resource:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Resource
+            inversedBy: check
+        bku:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Bku
+            inversedBy: checks
+        activity:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefKegiatan
+            joinColumn:
+                name: activity_no
+                referencedColumnName: kd_Keg
+        unit:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefSatker
+            joinColumn:
+                name: unit_no
+                referencedColumnName: id_unit
+        partner:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefRekanan
+            joinColumn:
+                name: partner_no
+                referencedColumnName: kode
+    oneToMany:
+        items:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Item
+            mappedBy: check
+    lifecycleCallbacks: {  }

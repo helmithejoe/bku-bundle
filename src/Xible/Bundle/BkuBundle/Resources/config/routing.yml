@@ -1,0 +1,3 @@
+xible_bku_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: XibleBkuBundle:Default:index }

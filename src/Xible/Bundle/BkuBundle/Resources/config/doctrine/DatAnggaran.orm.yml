@@ -1,0 +1,113 @@
+Xible\Bundle\BkuBundle\Entity\DatAnggaran:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\DatAnggaranRepository
+    table: dat_anggaran
+    indexes:
+        Kode:
+            columns:
+                - Kode
+        Unit:
+            columns:
+                - Unit
+        kd_Keg:
+            columns:
+                - kd_Keg
+        ket:
+            columns:
+                - ket
+        jns:
+            columns:
+                - jns
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        anggaran:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            default: '0.00'
+        revisi1:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            default: '0.00'
+        revisi2:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            default: '0.00'
+        revisi3:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            default: '0.00'
+        revisi4:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            default: '0.00'
+        revisi5:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            default: '0.00'
+        revisi6:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            default: '0.00'
+        revisi7:
+            type: decimal
+            nullable: true
+            precision: 18
+            scale: 2
+            default: '0.00'
+        awal:
+            type: decimal
+            nullable: true
+            precision: 16
+            scale: 2
+            default: '0.00'
+        ket:
+            type: string
+            nullable: true
+            length: 3
+            fixed: true
+            default: '-'
+        jns:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            default: '1'
+    manyToOne:
+        account:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefRekening
+            joinColumn:
+                name: Kode
+                referencedColumnName: Kode
+        unit:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefSatker
+            joinColumn:
+                name: Unit
+                referencedColumnName: id_unit
+        activity:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefKegiatan
+            joinColumn:
+                name: kd_Keg
+                referencedColumnName: kd_Keg
+                
+    lifecycleCallbacks: {  }

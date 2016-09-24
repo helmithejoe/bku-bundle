@@ -1,0 +1,132 @@
+<?php
+
+namespace Xible\Bundle\BkuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DatAnggaran
+ *
+ * @ORM\Table(name="dat_anggaran", indexes={@ORM\Index(name="Kode", columns={"Kode"}), @ORM\Index(name="Unit", columns={"Unit"}), @ORM\Index(name="kd_Keg", columns={"kd_Keg"}), @ORM\Index(name="ket", columns={"ket"}), @ORM\Index(name="jns", columns={"jns"})})
+ * @ORM\Entity(repositoryClass="Xible\Bundle\BkuBundle\Entity\DatAnggaranRepository")
+ */
+class DatAnggaran
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="anggaran", type="decimal", precision=18, scale=2, nullable=true)
+     */
+    private $anggaran;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="revisi1", type="decimal", precision=18, scale=2, nullable=true)
+     */
+    private $revisi1;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="revisi2", type="decimal", precision=18, scale=2, nullable=true)
+     */
+    private $revisi2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="revisi3", type="decimal", precision=18, scale=2, nullable=true)
+     */
+    private $revisi3;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="revisi4", type="decimal", precision=18, scale=2, nullable=true)
+     */
+    private $revisi4;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="revisi5", type="decimal", precision=18, scale=2, nullable=true)
+     */
+    private $revisi5;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="revisi6", type="decimal", precision=18, scale=2, nullable=true)
+     */
+    private $revisi6;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="revisi7", type="decimal", precision=18, scale=2, nullable=true)
+     */
+    private $revisi7;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="awal", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    private $awal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ket", type="string", length=3, nullable=true)
+     */
+    private $ket;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jns", type="string", length=1, nullable=true)
+     */
+    private $jns;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefRekening
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefRekening")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Kode", referencedColumnName="Kode")
+     * })
+     */
+    private $account;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefSatker
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefSatker")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Unit", referencedColumnName="id_unit")
+     * })
+     */
+    private $unit;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefKegiatan
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefKegiatan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="kd_Keg", referencedColumnName="kd_Keg")
+     * })
+     */
+    private $activity;
+
+
+}

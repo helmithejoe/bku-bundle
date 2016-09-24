@@ -1,0 +1,215 @@
+<?php
+
+namespace Xible\Bundle\BkuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DatJurnal01
+ *
+ * @ORM\Table(name="dat_jurnal01", indexes={@ORM\Index(name="jns", columns={"Jns"}), @ORM\Index(name="nojurnal", columns={"NoJurnal"}), @ORM\Index(name="tgtrans", columns={"TgTrans"}), @ORM\Index(name="Kode", columns={"Kode"}), @ORM\Index(name="debet", columns={"debet"}), @ORM\Index(name="kredit", columns={"kredit"}), @ORM\Index(name="sts", columns={"sts"}), @ORM\Index(name="nobukti", columns={"nobukti"}), @ORM\Index(name="tgbukti", columns={"tgbukti"}), @ORM\Index(name="kegiatan", columns={"kegiatan"}), @ORM\Index(name="loket", columns={"loket"}), @ORM\Index(name="poli", columns={"poli"}), @ORM\Index(name="pasien", columns={"pasien"}), @ORM\Index(name="rekanan", columns={"rekanan"}), @ORM\Index(name="Referensi", columns={"Referensi"}), @ORM\Index(name="kd_lpb", columns={"kd_lpb"}), @ORM\Index(name="kd_lak", columns={"kd_lak"}), @ORM\Index(name="kd_akt", columns={"kd_akt"})})
+ * @ORM\Entity(repositoryClass="Xible\Bundle\BkuBundle\Entity\DatJurnal01Repository")
+ */
+class DatJurnal01
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Jns", type="string", length=2, nullable=false)
+     */
+    private $jns;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NoJurnal", type="string", length=30, nullable=false)
+     */
+    private $nojurnal;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="TgTrans", type="date", nullable=false)
+     */
+    private $tgtrans;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="debet", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    private $debet;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kredit", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    private $kredit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Uraian", type="string", length=250, nullable=true)
+     */
+    private $uraian;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sts", type="string", length=1, nullable=true)
+     */
+    private $sts;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nobukti", type="string", length=50, nullable=false)
+     */
+    private $nobukti;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="tgbukti", type="date", nullable=false)
+     */
+    private $tgbukti;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keterangan", type="string", length=250, nullable=true)
+     */
+    private $keterangan;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="tgentri", type="datetime", nullable=true)
+     */
+    private $tgentri;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ket", type="string", length=1, nullable=true)
+     */
+    private $ket;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Referensi", type="string", length=50, nullable=true)
+     */
+    private $referensi;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="loket", type="string", length=2, nullable=true)
+     */
+    private $loket;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pasien", type="string", length=6, nullable=true)
+     */
+    private $pasien;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jTrans", type="string", length=1, nullable=true)
+     */
+    private $jtrans;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kd_lpb", type="string", length=3, nullable=true)
+     */
+    private $kdLpb;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kd_lak", type="string", length=3, nullable=true)
+     */
+    private $kdLak;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kd_akt", type="string", length=4, nullable=true)
+     */
+    private $kdAkt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="opr", type="string", length=30, nullable=true)
+     */
+    private $opr;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\Resource
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\Resource")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="dana", referencedColumnName="resource_no")
+     * })
+     */
+    private $resource;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefRekening
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefRekening")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Kode", referencedColumnName="Kode")
+     * })
+     */
+    private $account;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefKegiatan
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefKegiatan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="kegiatan", referencedColumnName="kd_Keg")
+     * })
+     */
+    private $activity;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefSatker
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefSatker")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="poli", referencedColumnName="id_unit")
+     * })
+     */
+    private $unit;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefRekanan
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefRekanan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="rekanan", referencedColumnName="kode")
+     * })
+     */
+    private $partner;
+
+
+}

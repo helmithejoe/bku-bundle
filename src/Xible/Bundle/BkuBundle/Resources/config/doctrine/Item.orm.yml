@@ -1,0 +1,51 @@
+Xible\Bundle\BkuBundle\Entity\Item:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\ItemRepository
+    indexes:
+        id:
+            columns:
+                - id
+        account:
+            columns:
+                - account_no
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        description:
+            type: string
+            nullable: false
+        amount:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            default: '0.00'
+        createdAt:
+            type: datetime
+            nullable: false
+        createdBy:
+            type: string
+            nullable: false
+        updatedAt:
+            type: datetime
+            nullable: false
+        updatedBy:
+            type: string
+            nullable: false
+    manyToOne:
+        check:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\Check
+            inversedBy: items
+        account:
+            targetEntity: Xible\Bundle\BkuBundle\Entity\RefRekening
+            joinColumn:
+                name: account_no
+                referencedColumnName: Kode
+       
+    lifecycleCallbacks: {  }

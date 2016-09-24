@@ -1,0 +1,36 @@
+Xible\Bundle\BkuBundle\Entity\RefRekanan:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\RefRekananRepository
+    table: ref_rekanan
+    id:
+        kode:
+            type: string
+            nullable: false
+            length: 4
+            fixed: true
+            default: '-'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nama:
+            type: string
+            nullable: true
+            length: 100
+            fixed: true
+            default: '-'
+        npwp:
+            type: string
+            nullable: true
+            length: 40
+            fixed: true
+            default: '-'
+            column: NPWP
+        alamat:
+            type: string
+            nullable: true
+            length: 150
+            fixed: true
+            default: '-'
+            column: Alamat
+    lifecycleCallbacks: {  }

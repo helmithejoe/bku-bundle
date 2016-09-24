@@ -1,0 +1,60 @@
+<?php
+
+namespace Xible\Bundle\BkuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RefKegiatan
+ *
+ * @ORM\Table(name="ref_kegiatan")
+ * @ORM\Entity(repositoryClass="Xible\Bundle\BkuBundle\Entity\RefKegiatanRepository")
+ */
+class RefKegiatan
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kd_Keg", type="string", length=17)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $kdKeg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Kegiatan", type="string", length=120, nullable=true)
+     */
+    private $kegiatan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kd_Prog", type="string", length=8, nullable=true)
+     */
+    private $kdProg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Program", type="string", length=120, nullable=true)
+     */
+    private $program;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="kd_output", type="string", length=12, nullable=true)
+     */
+    private $kdOutput;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="output", type="string", length=120, nullable=true)
+     */
+    private $output;
+
+
+}

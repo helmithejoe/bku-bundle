@@ -1,0 +1,87 @@
+<?php
+
+namespace Xible\Bundle\BkuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Item
+ *
+ * @ORM\Table(name="Item", indexes={@ORM\Index(name="id", columns={"id"}), @ORM\Index(name="account", columns={"account_no"})})
+ * @ORM\Entity(repositoryClass="Xible\Bundle\BkuBundle\Entity\ItemRepository")
+ */
+class Item
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="amount", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $amount;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="createdBy", type="string", nullable=false)
+     */
+    private $createdBy;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="updatedBy", type="string", nullable=false)
+     */
+    private $updatedBy;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\Check
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\Check", inversedBy="items")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="check_id", referencedColumnName="id")
+     * })
+     */
+    private $check;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefRekening
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefRekening")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="account_no", referencedColumnName="Kode")
+     * })
+     */
+    private $account;
+
+
+}

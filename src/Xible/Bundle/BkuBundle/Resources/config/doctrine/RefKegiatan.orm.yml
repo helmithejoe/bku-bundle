@@ -1,0 +1,51 @@
+Xible\Bundle\BkuBundle\Entity\RefKegiatan:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\RefKegiatanRepository
+    table: ref_kegiatan
+    id:
+        kdKeg:
+            type: string
+            nullable: false
+            length: 17
+            fixed: false
+            default: '-'
+            id: true
+            column: kd_Keg
+            generator:
+                strategy: IDENTITY
+    fields:
+        kegiatan:
+            type: string
+            nullable: true
+            length: 120
+            fixed: false
+            default: '-'
+            column: Kegiatan
+        kdProg:
+            type: string
+            nullable: true
+            length: 8
+            fixed: false
+            default: '-'
+            column: kd_Prog
+        program:
+            type: string
+            nullable: true
+            length: 120
+            fixed: false
+            default: '-'
+            column: Program
+        kdOutput:
+            type: string
+            nullable: true
+            length: 12
+            fixed: false
+            default: '-'
+            column: kd_output
+        output:
+            type: string
+            nullable: true
+            length: 120
+            fixed: false
+            default: '-'
+    lifecycleCallbacks: {  }

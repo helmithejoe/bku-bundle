@@ -1,0 +1,122 @@
+<?php
+
+namespace Xible\Bundle\BkuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Bku
+ *
+ * @ORM\Table(name="Bku", indexes={@ORM\Index(name="id", columns={"id"}), @ORM\Index(name="checkNo", columns={"check_no"}), @ORM\Index(name="journalNo", columns={"check_no"})})
+ * @ORM\Entity(repositoryClass="Xible\Bundle\BkuBundle\Entity\BkuRepository")
+ */
+class Bku
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="inputDate", type="date", nullable=false)
+     */
+    private $inputDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="journalNo", type="string", nullable=false)
+     */
+    private $journalNo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="journalDate", type="date", nullable=false)
+     */
+    private $journalDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="amount", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $amount;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="createdAt", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="createdBy", type="string", nullable=false)
+     */
+    private $createdBy;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="updatedBy", type="string", nullable=false)
+     */
+    private $updatedBy;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Xible\Bundle\BkuBundle\Entity\Check", mappedBy="bku")
+     */
+    private $checks;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\Resource
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\Resource", inversedBy="bku")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="resource_id", referencedColumnName="id")
+     * })
+     */
+    private $resource;
+
+    /**
+     * @var \Xible\Bundle\BkuBundle\Entity\RefBkum
+     *
+     * @ORM\ManyToOne(targetEntity="Xible\Bundle\BkuBundle\Entity\RefBkum")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cash_id", referencedColumnName="id_kas")
+     * })
+     */
+    private $cash;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->checks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

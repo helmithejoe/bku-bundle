@@ -1,0 +1,31 @@
+Xible\Bundle\BkuBundle\Entity\RefBkum:
+    type: entity
+    repositoryClass: Xible\Bundle\BkuBundle\Entity\RefBkumRepository
+    table: ref_bkum
+    indexes:
+        Kode:
+            columns:
+                - id_kas
+        Nama:
+            columns:
+                - ur_kas
+    id:
+        idKas:
+            type: string
+            nullable: false
+            length: 2
+            fixed: true
+            default: '-'
+            id: true
+            column: id_kas
+            generator:
+                strategy: IDENTITY
+    fields:
+        urKas:
+            type: string
+            nullable: true
+            length: 150
+            fixed: true
+            default: '-'
+            column: ur_kas
+    lifecycleCallbacks: {  }
